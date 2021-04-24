@@ -15,10 +15,4 @@ function Photos() {
         </main>
     )
 }
-
-// Get the allPhotos array from context
-    // map over it, creating <Image /> elements of the component we just made
-    // <Image key={???} img={<full image object here>} className={getClass(<index of image>)} />
-    
-
 export default Photos
