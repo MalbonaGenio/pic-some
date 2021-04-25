@@ -4,7 +4,7 @@ import { Context } from "../Context"
 
 function Image({img, className}) {
     const [hovered, setHovered] = useState(false)
-    const {toggleFavorite} = useContext(Context)
+    const {toggleFavorite, addToCart, cartItems, removeFromCart} = useContext(Context)
 
     function heartIcon() {
         if(img.isFavorite) {
@@ -18,6 +18,19 @@ function Image({img, className}) {
         }
     }
 
+    function cartIcon() {
+        const isInCart = cartItems.some(item => item.id === img.id)
+        if(isInCart){
+            return <i 
+            className="ri-shopping-cart-fill cart"
+            onClick={() => removeFromCart(img.id)}></i>
+        } else if(hovered) {
+            return <i 
+            className="ri-add-circle-line cart"
+            onClick={() => addToCart(img)}></i>
+        }
+    }
+
     return (
         //sets image-container but allows to pass things trough className too.
         <div 
@@ -26,7 +39,7 @@ function Image({img, className}) {
             onMouseLeave={() => setHovered(false)}>
             <img src={img.url} className="image-grid"/>
             {heartIcon()}
-            {hovered && <i className="ri-add-circle-line cart"></i>}
+            {cartIcon()}
         </div>
     )
 }
