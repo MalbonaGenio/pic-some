@@ -17,16 +17,18 @@ function Cart() {
             setButtonText("Place Order")
             emptyCart()
         }, 3000)
-
     }
+    
     return (
         <main className="cart-page">
             <h1>Check out</h1>
             {cartItemsElements}
             <p className="total-cost">Total: {totalCostDisplay}</p>
+            {cartItems.length > 0 ?
             <div className="order-button">
                 <button onClick={placeOrder}>{buttonText}</button>
-            </div>
+            </div> :
+            <p>No items in cart.</p>}
         </main>
     )
 }
