@@ -1,6 +1,7 @@
 import React, {useContext, useState} from "react"
 import CartElements from "../components/CartElements"
 import {Context} from "../Context"
+import PropType from "prop-types"
 
 function Cart() {
     const {cartItems, emptyCart} = useContext(Context)
@@ -18,7 +19,7 @@ function Cart() {
             emptyCart()
         }, 3000)
     }
-    
+
     return (
         <main className="cart-page">
             <h1>Check out</h1>
@@ -31,6 +32,12 @@ function Cart() {
             <p>No items in cart.</p>}
         </main>
     )
+}
+
+Image.propType = {
+    item: PropType.shape({
+        url: PropType.string.isRequired
+    })
 }
 
 export default Cart
